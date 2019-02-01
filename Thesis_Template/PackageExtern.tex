@@ -1,0 +1,240 @@
+
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+
+\usepackage{multicol}
+
+% Set the size of the Headlines (\sections)
+\usepackage{sectsty}
+\sectionfont{\fontsize{10}{15}\selectfont}
+\subsectionfont{\fontsize{10}{15}\selectfont}
+\subsubsectionfont{\fontsize{10}{15}\selectfont}
+\chapterfont{\fontsize{13}{15}\selectfont}
+
+
+\usepackage{tabularx}
+\usepackage{todonotes}
+
+\usepackage{amsmath}
+%center equations
+	\makeatletter
+	\@fleqnfalse
+	\@mathmargin\@centering
+	\makeatother
+%%%
+%theorem
+\usepackage{amsthm}
+
+\numberwithin{equation}{section}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows,calc,decorations.pathmorphing}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+\usetikzlibrary{positioning,calc}
+\usetikzlibrary{arrows,backgrounds}
+\usepgflibrary{shapes.multipart}
+
+
+\usepackage{float}
+\usepackage{subcaption}
+
+
+%jusefy
+\usepackage{ragged2e}
+
+
+\usepackage{amssymb}
+\usepackage{bm} 
+\usepackage{graphicx} 
+\usepackage{pdflscape} 
+\usepackage[bottom]{footmisc}
+\usepackage{booktabs,caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage[toc,page]{appendix}
+\usepackage{color}
+\usepackage{array} 
+\usepackage{arydshln}
+
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X} 
+\usepackage[style=numeric,backend=bibtex]{biblatex}
+
+
+%% integral over sum
+\usepackage{graphicx}
+\DeclareMathOperator*{\SumInt}{%
+	\mathchoice%
+	{\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+	{\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+	{\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+	{\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+
+
+
+\usepackage{listings}
+\usepackage{dsfont}
+\newcommand\deff{\stackrel{def}{=}}
+\usepackage{listings}
+\lstset{
+	breaklines=true,
+	tabsize=4,
+	%literate={\ \ }{{\ }}1
+	numbers=left,
+  	%stepnumber=5,    
+ 	firstnumber=1,
+  	numberfirstline=true,
+  	xleftmargin=2em,
+  	%frame=single,
+  	%framexleftmargin=1.5em
+}
+
+\usepackage[onehalfspacing]{setspace}
+%\usepackage[doublespacing]{setspace}
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=30mm, right=30mm, bottom=25mm}
+
+\usepackage[draft = false]{hyperref}
+
+\hypersetup{hyperfootnotes = fales,	citebordercolor = blue,	colorlinks   = true, 	hyperfigures = true,	urlcolor     = blue, 	linkcolor    = blue, 	citecolor   = blue }
+
+
+\ExecuteBibliographyOptions{maxcitenames=1}
+
+\DeclareFieldFormat{citehyperref}{%
+	\DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	\bibhyperref{#1}}
+
+\DeclareFieldFormat{textcitehyperref}{%
+	\DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	\bibhyperref{%
+		#1%
+		\ifbool{cbx:parens}
+		{\bibcloseparen\global\boolfalse{cbx:parens}}
+		{}}}
+
+\savebibmacro{cite}
+\savebibmacro{textcite}
+
+\renewbibmacro*{cite}{%
+	\printtext[citehyperref]{%
+		\restorebibmacro{cite}%
+		\usebibmacro{cite}}}
+
+\renewbibmacro*{textcite}{%
+	\ifboolexpr{
+		( not test {\iffieldundef{prenote}} and
+		test {\ifnumequal{\value{citecount}}{1}} )
+		or
+		( not test {\iffieldundef{postnote}} and
+		test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+	}
+	{\DeclareFieldAlias{textcitehyperref}{noformat}}
+	{}%
+	\printtext[textcitehyperref]{%
+		\restorebibmacro{textcite}%
+		\usebibmacro{textcite}}}
+
+\addto\extrasenglish{%
+	\renewcommand{\chapterautorefname}{\S}
+	\renewcommand{\sectionautorefname}{\S}%
+	\renewcommand{\subsectionautorefname}{\S}%
+	\renewcommand{\appendixautorefname}{\S}
+}
+
+%DOTS I TABLE OF COTENT.
+\usepackage{tocloft}
+
+\renewcommand\cftchapdotsep{\cftdotsep}
+\renewcommand\cftchapleader{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+
+% change size of table of content headline
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+%chage size of appendices heasline
+\renewcommand{\appendixpagename}{\large Appendices}
+\renewcommand\cftloftitlefont{\large\bfseries}
+
+%space aftter "contets"
+\setlength\cftaftertoctitleskip{40pt}
+\setlength\cftafterloftitleskip{50pt}
+
+\setlength{\cftfigindent}{0pt}  % remove indentation from figures in lof
+\setlength{\cfttabindent}{0pt}  % remove indentation from tables in lot
+
+%numbering for subsubsection
+\setcounter{secnumdepth}{3}
+% https://divisbyzero.com/2008/09/22/what-is-the-difference-between-a-theorem-a-lemma-and-a-corollary/
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{remark}{Remark}
+
+\newcommand{\definitionautorefname}{Definition}
+\newcommand{\axiomautorefname}{Axiom}
+\newcommand{\conjectureautorefname}{Conjecture}
+\newcommand{\propositionautorefname}{Proposition}
+\newcommand{\lemmaautorefname}{Lemma}
+\newcommand{\corollaryautorefname}{Corollary}
+
+%\begin{theorem}[Pythagorean theorem]
+%\begin{proof}
+
+\usepackage{textcomp}
+
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+%frame around text
+\tcbset{
+	frame code={}
+	center title,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt,
+	colback=gray!10,
+	colframe=gray!10,
+	%width=\dimexpr\textwidth\relax,
+	width=\textwidth,
+	enlarge left by=-0.50mm,
+	boxsep=5pt,
+	arc=0pt,outer arc=0pt,
+}
+
+
+\usepackage{pstricks}
+
+\usepackage{yfonts}
+\usepackage{eufrak}
+
+\usepackage{lipsum}
+\newenvironment{Figure}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
+
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\usepackage{chngpage}
+\usetikzlibrary{cd}
+
+\usepackage{blindtext}
+
+
+\usepackage{algorithm,float}
+\usepackage[noend]{algpseudocode}
+
+\usetikzlibrary{bayesnet}

@@ -1,0 +1,41 @@
+\documentclass[8pt,fleqn]{report}
+\input{PackageExtern}
+\input{variables}
+\addbibresource{bibliography.bib}
+
+\begin{document}
+\input{titlepage}
+\pagenumbering{Roman}
+
+\begin{abstract}	
+%%% ABSTRACT	
+\input{Input_Files/Abstract.tex}
+\end{abstract}
+
+\clearpage
+\hypersetup{linkcolor=black}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\hypersetup{linkcolor=blue}
+\setcounter{chapter}{-1}
+
+%%% Add Chapters
+\input{Input_Files/Preliminaries.tex}
+\input{Input_Files/Introduction.tex}
+\input{Input_Files/SampleChapter.tex}
+\input{Input_Files/Experiments.tex}
+\input{Input_Files/Conclusion.tex}
+
+\clearpage
+
+\printbibliography 
+
+\begin{appendices}
+%%% Add appendices
+\input{Input_Files/A_Derivations.tex}
+\end{appendices}
+
+
+
+\end{document}

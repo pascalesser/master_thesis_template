@@ -1,0 +1,14 @@
+%\pagestyle{headings}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+\renewcommand{\headrulewidth}{0pt}
+
+\cfoot{\thepage}
+
+\fancyhead[L]{\rightmark}
+%\fancyhead[L]{Pascal M. Esser}
